@@ -286,7 +286,7 @@ function loadSocialLinks() {
     .then((response) => response.json())
     .then((data) => {
       const socialLinksContainer = document.getElementById(
-        'social-links-container'
+        'connect-links-container'
       )
 
       data.forEach((social) => {
