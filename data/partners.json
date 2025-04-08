@@ -1,0 +1,67 @@
+[
+    {
+        "id": "gummibaerenbande",
+        "title": "Gummibärenbande",
+        "category": "Partner",
+        "description": "A german gaming Discord Server. I mainly stick around there and sometimes showcase my new projects.",
+        "video": "videos/gummibaeren.webm",
+        "link": "https://discord.gg/K7Tjtfq",
+        "tags": [
+            "gaming",
+            "community",
+            "discord"
+        ]
+    },
+    {
+        "id": "kolpingtheater-partner",
+        "title": "Kolpingtheater Ramsen",
+        "category": "Partner",
+        "description": "Our local theater group, which I am a part of. We present a new open air play every year.",
+        "image": "svg/Kolpingtheater.svg",
+        "link": "http://theater.kolping-ramsen.de",
+        "tags": [
+            "theater",
+            "acting",
+            "community"
+        ]
+    },
+    {
+        "id": "palatina-films-partner",
+        "title": "Palatina Films",
+        "category": "Partner",
+        "description": "A small hobby film production company. I am a part of the team but the project is currently on hold.",
+        "image": "svg/PalatinaFilms.svg",
+        "link": "https://palatina-films.de",
+        "tags": [
+            "film",
+            "production",
+            "creative"
+        ]
+    },
+    {
+        "id": "jp",
+        "title": "JP",
+        "category": "Partner",
+        "description": "Events, Partys, Trips and more. This guys knows how to create great memories and experiences. Always fun to be around!",
+        "image": "svg/JP.svg",
+        "link": "https://jupeters.de",
+        "tags": [
+            "events",
+            "parties",
+            "travel"
+        ]
+    },
+    {
+        "id": "cfw",
+        "title": "CFW",
+        "category": "Partner",
+        "description": "The practical mastermind. Very dependable and always ready to help. I am very happy to have him as a friend!",
+        "image": "svg/CFW.svg",
+        "link": "https://www.youtube.com/channel/UClU8mK17SZwqCLDES0olV1w",
+        "tags": [
+            "technical",
+            "creative",
+            "youtube"
+        ]
+    }
+]

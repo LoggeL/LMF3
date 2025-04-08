@@ -1,0 +1,54 @@
+[
+    {
+        "id": "mail-contact",
+        "title": "Mail - hyper.xjo@gmail.com",
+        "category": "Contact",
+        "description": "Feel free to contact me via mail. I will try to answer as soon as possible.",
+        "image": "svg/Mail.svg",
+        "link": "mailto:hyper.xjo@gmail.com",
+        "tags": [
+            "email",
+            "contact",
+            "professional"
+        ]
+    },
+    {
+        "id": "telegram-contact",
+        "title": "Telegram - loggel.t.me",
+        "category": "Contact",
+        "description": "If you want an answer as soon as possible, feel free to contact me via Telegram. I am always online there.",
+        "image": "svg/Telegram.svg",
+        "link": "https://t.me/loggel",
+        "tags": [
+            "messaging",
+            "quick-contact",
+            "chat"
+        ]
+    },
+    {
+        "id": "discord-contact",
+        "title": "Discord - Username: logge.top",
+        "category": "Contact",
+        "description": "If you have questions or want to talk about a project, feel free to contact me via Discord (DM or in the GBB Server).",
+        "image": "svg/Discord.svg",
+        "link": "https://discord.gg/K7Tjtfq",
+        "tags": [
+            "gaming",
+            "chat",
+            "community"
+        ]
+    },
+    {
+        "id": "github-contact",
+        "title": "GitHub - LoggeL",
+        "category": "Contact",
+        "description": "If you want to see my code or want to contribute to a project, feel free to contact me via GitHub. I am always open for new ideas.",
+        "image": "svg/GitHub.svg",
+        "link": "https://github.com/LoggeL/",
+        "tags": [
+            "code",
+            "open-source",
+            "collaboration"
+        ]
+    }
+]
