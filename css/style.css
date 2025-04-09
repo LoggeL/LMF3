@@ -826,11 +826,32 @@ footer {
     transform: translateY(-100%);
     opacity: 0;
     transition: var(--transition);
+    z-index: 1000;
+    height: auto;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
   }
 
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--dark-color);
+    border-radius: 3px;
+    transition: var(--transition);
   }
 
   .menu-toggle.active .bar:nth-child(1) {

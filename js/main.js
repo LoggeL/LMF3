@@ -298,7 +298,7 @@ function loadSocialLinks() {
         // Determine the icon based on the social platform
         let icon = ''
         if (social.id.includes('mail')) {
-          icon = 'fa-envelope'
+          icon = 'fas fa-envelope'
         } else if (social.id.includes('telegram')) {
           icon = 'fa-telegram'
         } else if (social.id.includes('discord')) {
