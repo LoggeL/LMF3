@@ -3,7 +3,7 @@
         "id": "theater-website",
         "title": "Kolpingtheater Ramsen",
         "category": "Website + Ticket System",
-        "description": "Complete website and ticketing system for a local theater in Ramsen. Built with Vue.js frontend and Express.js backend with SQLite database for secure ticket reservations.",
+        "description": "Complete website and ticketing system for a local theater in Ramsen. Built with Next.js, Tailwind CSS, TypeScript and Cloudflare.",
         "picture": "images/Kolpingtheater",
         "link": "http://theater.kolping-ramsen.de",
         "tags": [
