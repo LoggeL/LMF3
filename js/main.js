@@ -1,5 +1,8 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize theme
+  initTheme()
+
   // Initialize animations
   initAnimations()
 
@@ -23,6 +26,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize scroll animations
   initScrollAnimations()
 })
+
+// Theme management
+function initTheme() {
+  const themeToggle = document.getElementById('theme-toggle')
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const savedTheme = localStorage.getItem('theme')
+  
+  // Set initial theme
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme)
+  } else if (prefersDark) {
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }
+  
+  // Update icon based on theme
+  updateThemeIcon()
+  
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+    
+    document.documentElement.setAttribute('data-theme', newTheme)
+    localStorage.setItem('theme', newTheme)
+    updateThemeIcon()
+    
+    // Add rotation animation
+    themeToggle.style.transform = 'rotate(360deg)'
+    setTimeout(() => {
+      themeToggle.style.transform = ''
+    }, 400)
+  })
+}
+
+function updateThemeIcon() {
+  const themeToggle = document.getElementById('theme-toggle')
+  const currentTheme = document.documentElement.getAttribute('data-theme')
+  
+  if (currentTheme === 'dark') {
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'
+  } else {
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'
+  }
+}
 
 // Initialize animations with Anime.js
 function initAnimations() {
