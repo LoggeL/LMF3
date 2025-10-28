@@ -1,5 +1,19 @@
 [
     {
+        "id": "theater-website",
+        "title": "Kolpingtheater Ramsen",
+        "category": "Website + Ticket System",
+        "description": "Complete website and ticketing system for a local theater in Ramsen. Built with Vue.js frontend and Express.js backend with SQLite database for secure ticket reservations.",
+        "picture": "images/Kolpingtheater",
+        "link": "http://theater.kolping-ramsen.de",
+        "tags": [
+            "nextjs",
+            "tailwindcss",
+            "typescript",
+            "cloudflare"
+        ]
+    },
+    {
         "id": "oilbert",
         "title": "Oilbert's Adventure",
         "category": "Game Website",
@@ -114,20 +128,6 @@
             "sailing",
             "travel",
             "cinematography"
-        ]
-    },
-    {
-        "id": "theater-website",
-        "title": "Kolpingtheater Ramsen",
-        "category": "Website + Ticket System",
-        "description": "Complete website and ticketing system for a local theater in Ramsen. Built with Vue.js frontend and Express.js backend with SQLite database for secure ticket reservations.",
-        "picture": "images/Kolpingtheater",
-        "link": "http://theater.kolping-ramsen.de",
-        "tags": [
-            "vue",
-            "express",
-            "sql",
-            "fullstack"
         ]
     },
     {
