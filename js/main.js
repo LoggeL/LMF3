@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize scroll animations
   initScrollAnimations()
+
+  // Initialize magnetic buttons
+  initMagneticButtons()
 })
 
 // Theme management
@@ -32,26 +35,26 @@ function initTheme() {
   const themeToggle = document.getElementById('theme-toggle')
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
   const savedTheme = localStorage.getItem('theme')
-  
+
   // Set initial theme
   if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme)
   } else if (prefersDark) {
     document.documentElement.setAttribute('data-theme', 'dark')
   }
-  
+
   // Update icon based on theme
   updateThemeIcon()
-  
+
   // Toggle theme on button click
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme')
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
-    
+
     document.documentElement.setAttribute('data-theme', newTheme)
     localStorage.setItem('theme', newTheme)
     updateThemeIcon()
-    
+
     // Add rotation animation
     themeToggle.style.transform = 'rotate(360deg)'
     setTimeout(() => {
@@ -63,7 +66,7 @@ function initTheme() {
 function updateThemeIcon() {
   const themeToggle = document.getElementById('theme-toggle')
   const currentTheme = document.documentElement.getAttribute('data-theme')
-  
+
   if (currentTheme === 'dark') {
     themeToggle.innerHTML = '<i class="fas fa-sun"></i>'
   } else {
@@ -164,20 +167,12 @@ function loadProjects() {
         const projectCard = document.createElement('div')
         projectCard.className = 'project-card'
 
-        // Add archived class if the project is archived
         if (project.archived) {
           projectCard.classList.add('archived')
         }
 
-        // Extract categories from the project's category field
-        const categories = project.category
-          .split('+')
-          .map((cat) => cat.trim().toLowerCase())
-
-        // Store category as data attributes
         projectCard.setAttribute('data-category', project.category)
 
-        // Create project card HTML
         projectCard.innerHTML = `
           <div class="project-image">
             <picture>
@@ -185,81 +180,298 @@ function loadProjects() {
               <source srcset="${project.picture}.webp" type="image/webp">
               <img src="${project.picture}.jpg" alt="${project.title}">
             </picture>
-            ${
-              project.archived
-                ? '<div class="archived-badge">Archived</div>'
-                : ''
-            }
+            ${project.archived ? '<div class="archived-badge">Archived</div>' : ''}
           </div>
           <div class="project-content">
             <h3 class="project-title">${project.title}</h3>
             <div class="project-category">${project.category}</div>
             <p class="project-description">${project.description}</p>
             <div class="project-tags">
-              ${project.tags
-                .map((tag) => `<span class="project-tag">${tag}</span>`)
-                .join('')}
+              ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
             </div>
           </div>
-          ${
-            !project.archived
-              ? `<a href="${project.link}" class="project-link" target="_blank"></a>`
-              : ''
-          }
+          ${!project.archived ? '<div class="project-overlay"><span>Click to preview</span></div>' : ''}
         `
+
+        if (!project.archived) {
+          projectCard.addEventListener('click', (e) => {
+            e.preventDefault()
+            openProjectModal(project, projectCard)
+          })
+          projectCard.style.cursor = 'pointer'
+        }
 
         projectsContainer.appendChild(projectCard)
       })
 
-      // Initialize filter functionality
       initProjectFilters()
+      initProjectModal()
     })
     .catch((error) => console.error('Error loading projects:', error))
 }
 
+function initProjectModal() {
+  const modal = document.getElementById('project-modal')
+  const closeBtn = document.querySelector('.close-modal')
+
+  if (!modal || !closeBtn) return
+
+  const closeModal = () => {
+    // Morph back or just fade? Fading back is usually safer and clean.
+    anime({
+      targets: '#project-modal',
+      opacity: 0,
+      duration: 300,
+      easing: 'easeInQuad',
+      complete: () => {
+        modal.style.display = 'none'
+        document.body.style.overflow = 'auto'
+        // Reset modal content styles
+        const modalContent = document.querySelector('.modal-content')
+        modalContent.style.transform = ''
+        modalContent.style.opacity = ''
+      }
+    })
+  }
+
+  closeBtn.onclick = closeModal
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      closeModal()
+    }
+  }
+
+  // Handle Escape key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      closeModal()
+    }
+  })
+}
+
+function openProjectModal(project, cardElement) {
+  const modal = document.getElementById('project-modal')
+  const modalContent = document.querySelector('.modal-content')
+  const modalImage = document.getElementById('modal-image')
+  const modalTitle = document.getElementById('modal-title')
+  const modalCategory = document.getElementById('modal-category')
+  const modalDescription = document.getElementById('modal-description')
+  const modalTags = document.getElementById('modal-tags')
+  const modalLink = document.getElementById('modal-link')
+
+  if (!modal || !modalContent) return
+
+  // 1. Populate data FIRST
+  modalImage.src = `${project.picture}.jpg`
+  modalImage.alt = project.title
+  modalTitle.textContent = project.title
+  modalCategory.textContent = project.category
+  modalDescription.textContent = project.description
+  modalTags.innerHTML = project.tags
+    .map((tag) => `<span class="project-tag">${tag}</span>`)
+    .join('')
+  modalLink.href = project.link
+
+  // 2. Prepare Morphing
+  const cardRect = cardElement.getBoundingClientRect()
+
+  // Show modal container but hide content for measurement
+  modal.style.display = 'flex'
+  modal.style.opacity = '0'
+  modalContent.style.opacity = '0'
+  modalContent.style.transform = 'none' // Reset any previous transforms
+  document.body.style.overflow = 'hidden'
+
+  // Use requestAnimationFrame to ensure layout has happened
+  requestAnimationFrame(() => {
+    const finalRect = modalContent.getBoundingClientRect()
+
+    // 3. Calculate scales and positions
+    const scaleX = cardRect.width / finalRect.width
+    const scaleY = cardRect.height / finalRect.height
+    const translateX = (cardRect.left + cardRect.width / 2) - (finalRect.left + finalRect.width / 2)
+    const translateY = (cardRect.top + cardRect.height / 2) - (finalRect.top + finalRect.height / 2)
+
+    // Set initial morphed state using anime.set for better property tracking
+    anime.set(modalContent, {
+      translateX: translateX,
+      translateY: translateY,
+      scaleX: scaleX,
+      scaleY: scaleY,
+      opacity: 1
+    })
+
+    // Animate Background Fade In
+    anime({
+      targets: modal,
+      opacity: 1,
+      duration: 400,
+      easing: 'linear'
+    })
+
+    // Animate Content Morph (Scale & Position)
+    anime({
+      targets: modalContent,
+      translateX: 0,
+      translateY: 0,
+      scaleX: 1,
+      scaleY: 1,
+      duration: 800,
+      easing: 'spring(1, 85, 14, 0)'
+    })
+
+    // Animate internal elements fade in
+    anime({
+      targets: [modalImage, modalTitle, modalCategory, modalDescription, modalTags, modalLink],
+      opacity: [0, 1],
+      translateY: [20, 0],
+      delay: anime.stagger(60, { start: 200 }),
+      duration: 600,
+      easing: 'easeOutExpo'
+    })
+  })
+}
+
 // Initialize project filters
+// Initialize project filters with smooth animated reordering
 function initProjectFilters() {
   const filterButtons = document.querySelectorAll('.filter-btn')
-  const projectCards = document.querySelectorAll('.project-card')
+  const projectCards = Array.from(document.querySelectorAll('.project-card'))
 
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
+      // Don't do anything if clicking already active button
+      if (button.classList.contains('active')) return
+
       // Remove active class from all buttons
       filterButtons.forEach((btn) => btn.classList.remove('active'))
-
       // Add active class to clicked button
       button.classList.add('active')
 
       const filter = button.getAttribute('data-filter')
 
-      // Filter projects
-      projectCards.forEach((card) => {
-        if (filter === 'all') {
-          card.style.display = 'block'
-        } else {
-          const cardCategory = card.getAttribute('data-category')
-          if (
-            cardCategory
-              .toLocaleLowerCase()
-              .includes(filter.toLocaleLowerCase())
-          ) {
-            card.style.display = 'block'
-          } else {
-            card.style.display = 'none'
-          }
-        }
+      // Identify which cards will hide, show, or stay
+      const cardsToHide = []
+      const cardsToShow = []
+      const cardsToStay = []
 
-        // Animate visible cards
-        if (card.style.display === 'block') {
+      projectCards.forEach((card) => {
+        const category = card.getAttribute('data-category').toLowerCase()
+        const shouldShow =
+          filter === 'all' || category.includes(filter.toLowerCase())
+        const isCurrentlyVisible =
+          window.getComputedStyle(card).display !== 'none'
+
+        // Add a class to disable CSS transitions during animation
+        card.classList.add('filtering')
+
+        if (shouldShow && !isCurrentlyVisible) {
+          cardsToShow.push(card)
+        } else if (!shouldShow && isCurrentlyVisible) {
+          cardsToHide.push(card)
+        } else if (shouldShow && isCurrentlyVisible) {
+          cardsToStay.push(card)
+        }
+      })
+
+      // Record "First" positions of cards that stay
+      const stayPositions = cardsToStay.map((card) => {
+        return {
+          card,
+          rect: card.getBoundingClientRect(),
+        }
+      })
+
+      // Animate OUT cards that are hiding
+      if (cardsToHide.length > 0) {
+        anime({
+          targets: cardsToHide,
+          opacity: 0,
+          scale: 0.8,
+          translateY: 20,
+          duration: 300,
+          easing: 'easeInQuad',
+          complete: () => {
+            cardsToHide.forEach((card) => {
+              card.style.display = 'none'
+            })
+            performLayoutTransition()
+          },
+        })
+      } else {
+        performLayoutTransition()
+      }
+
+      function performLayoutTransition() {
+        // Show "new" cards (but keep them invisible for now)
+        cardsToShow.forEach((card) => {
+          card.style.display = 'block'
+          // Reset any previous transforms and set initial state
+          anime.set(card, {
+            translateX: 0,
+            translateY: 0,
+            scale: 0.8,
+            opacity: 0,
+          })
+          // We'll use translateY: 20 in the actual animation
+        })
+
+        // Record "Last" positions of cards that stay
+        const stayAnimations = stayPositions.map((pos) => {
+          const lastRect = pos.card.getBoundingClientRect()
+          const dx = pos.rect.left - lastRect.left
+          const dy = pos.rect.top - lastRect.top
+
+          return {
+            card: pos.card,
+            dx,
+            dy,
+          }
+        })
+
+        // "Invert" and "Play" for staying cards
+        stayAnimations.forEach((anim) => {
+          anime.set(anim.card, {
+            translateX: anim.dx,
+            translateY: anim.dy,
+          })
+
           anime({
-            targets: card,
+            targets: anim.card,
+            translateX: 0,
+            translateY: 0,
+            duration: 600,
+            easing: 'spring(1, 80, 15, 0)',
+            complete: () => {
+              anim.card.classList.remove('filtering')
+            },
+          })
+        })
+
+        // Animate IN new cards
+        if (cardsToShow.length > 0) {
+          anime({
+            targets: cardsToShow,
             opacity: [0, 1],
+            scale: [0.8, 1],
             translateY: [20, 0],
             duration: 600,
             easing: 'easeOutExpo',
+            delay: anime.stagger(60),
+            complete: (anim) => {
+              anim.animatables.forEach((item) => {
+                item.target.classList.remove('filtering')
+              })
+            },
           })
         }
-      })
+
+        // If no cards were animated, make sure to remove filtering class
+        if (stayAnimations.length === 0 && cardsToShow.length === 0) {
+          projectCards.forEach((card) => card.classList.remove('filtering'))
+        }
+      }
     })
   })
 }
@@ -343,24 +555,30 @@ function loadSocialLinks() {
         socialLink.target = '_blank'
 
         // Determine the icon based on the social platform
-        let icon = ''
+        let iconClass = ''
         if (social.id.includes('mail')) {
-          icon = 'fas fa-envelope'
+          iconClass = 'fas fa-envelope'
         } else if (social.id.includes('telegram')) {
-          icon = 'fa-telegram'
+          iconClass = 'fab fa-telegram'
         } else if (social.id.includes('discord')) {
-          icon = 'fa-discord'
+          iconClass = 'fab fa-discord'
         } else if (social.id.includes('github')) {
-          icon = 'fa-github'
+          iconClass = 'fab fa-github'
         }
 
         socialLink.innerHTML = `
-          <i class="fab ${icon}"></i>
+          <i class="${iconClass}"></i>
           <div class="social-link-content">
             <div class="social-link-title">${social.title}</div>
             <div class="social-link-description">${social.description}</div>
           </div>
         `
+
+        // Add platform data attribute for styling
+        if (social.id.includes('mail')) socialLink.setAttribute('data-platform', 'mail');
+        else if (social.id.includes('telegram')) socialLink.setAttribute('data-platform', 'telegram');
+        else if (social.id.includes('discord')) socialLink.setAttribute('data-platform', 'discord');
+        else if (social.id.includes('github')) socialLink.setAttribute('data-platform', 'github');
 
         socialLinksContainer.appendChild(socialLink)
       })
@@ -433,6 +651,18 @@ function initScrollAnimations() {
 
   window.addEventListener('scroll', animateOnScroll)
   animateOnScroll() // Initial check
+
+  // Add spotlight effect to sections
+  const spotlightSections = document.querySelectorAll('.partners, .socials')
+  spotlightSections.forEach(section => {
+    section.addEventListener('mousemove', (e) => {
+      const rect = section.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      section.style.setProperty('--mouse-x', `${x}px`)
+      section.style.setProperty('--mouse-y', `${y}px`)
+    })
+  })
 }
 
 // LMF Meaning Animation
@@ -534,4 +764,23 @@ function setCurrentYear() {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear()
   }
+}
+
+// Magnetic Buttons Effect
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.magnetic-btn')
+
+  buttons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect()
+      const x = e.clientX - rect.left - rect.width / 2
+      const y = e.clientY - rect.top - rect.height / 2
+
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`
+    })
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)'
+    })
+  })
 }

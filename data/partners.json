@@ -26,19 +26,6 @@
         ]
     },
     {
-        "id": "palatina-films-partner",
-        "title": "Palatina Films",
-        "category": "Partner",
-        "description": "A small hobby film production company. I am a part of the team but the project is currently on hold.",
-        "image": "svg/PalatinaFilms.svg",
-        "link": "https://palatina-films.de",
-        "tags": [
-            "film",
-            "production",
-            "creative"
-        ]
-    },
-    {
         "id": "jp",
         "title": "JP",
         "category": "Partner",

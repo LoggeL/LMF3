@@ -1,215 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="LMF - Creative portfolio showcasing games, movies, and web development projects. Explore interactive experiences and cinematic content."
-    />
-    <meta
-      name="keywords"
-      content="portfolio, games, movies, web development, creative projects, interactive experiences"
-    />
-    <meta name="author" content="LMF" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lmf.logge.top/" />
-    <meta property="og:title" content="LMF - Creative Portfolio" />
-    <meta
-      property="og:description"
-      content="Explore a collection of games, movies, and web development projects. Interactive experiences and cinematic content."
-    />
-    <meta property="og:image" content="https://lmf.logge.top/images/Logo.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="LMF - Creative portfolio showcasing games, movies, and web development projects. Explore interactive experiences and cinematic content." />
+  <meta name="keywords"
+    content="portfolio, games, movies, web development, creative projects, interactive experiences" />
+  <meta name="author" content="LMF" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://lmf.logge.top/" />
-    <meta property="twitter:title" content="LMF - Creative Portfolio" />
-    <meta
-      property="twitter:description"
-      content="Explore a collection of games, movies, and web development projects. Interactive experiences and cinematic content."
-    />
-    <meta
-      property="twitter:image"
-      content="https://lmf.logge.top/images/Logo.png"
-    />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lmf.logge.top/" />
+  <meta property="og:title" content="LMF - Creative Portfolio" />
+  <meta property="og:description"
+    content="Explore a collection of games, movies, and web development projects. Interactive experiences and cinematic content." />
+  <meta property="og:image" content="https://lmf.logge.top/images/Logo.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/Logo.png" />
-    <link rel="apple-touch-icon" href="images/Logo.png" />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://lmf.logge.top/" />
+  <meta property="twitter:title" content="LMF - Creative Portfolio" />
+  <meta property="twitter:description"
+    content="Explore a collection of games, movies, and web development projects. Interactive experiences and cinematic content." />
+  <meta property="twitter:image" content="https://lmf.logge.top/images/Logo.png" />
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#d90429" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Logo.png" />
+  <link rel="apple-touch-icon" href="images/Logo.png" />
 
-    <title>LMF - Creative Portfolio</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#d90429" />
 
-    <header>
-      <div class="container">
-        <nav>
-          <div class="logo">
-            <a href="#home">
-              <img src="svg/Logo.svg" alt="LMF Logo" class="logo-img" />
-            </a>
-          </div>
-          <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#partners">Partners</a></li>
-            <li><a href="#socials">Connect</a></li>
-          </ul>
-          <div class="nav-controls">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-              <i class="fas fa-moon"></i>
-            </button>
-            <div class="menu-toggle">
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
+  <title>LMF - Creative Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap"
+    rel="stylesheet" />
+</head>
 
-    <main>
-      <section id="home" class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="animate-text">Welcome to LMF</h1>
-            <div id="lmf-meaning"></div>
-            <p class="animate-text">A Modern Frontier of Innovation</p>
-            <div class="cta-buttons">
-              <a href="#projects" class="btn btn-primary">View My Work</a>
-              <a href="#about" class="btn btn-secondary">About Me</a>
-            </div>
-          </div>
-          <div class="hero-image animate-image">
-            <div class="image-container">
-              <img
-                src="images/Me.jpg"
-                alt="Logge"
-                class="profile-image active"
-              />
-              <img src="images/Me2.jpg" alt="Logge" class="profile-image" />
-              <img src="svg/Me3.svg" alt="Logge" class="profile-image" />
-            </div>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="#home">
+            <img src="svg/Logo.svg" alt="LMF Logo" class="logo-img" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#socials">Connect</a></li>
+        </ul>
+        <div class="nav-controls">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
           </div>
         </div>
-      </section>
+      </nav>
+    </div>
+  </header>
 
-      <section id="about" class="about">
-        <div class="container">
-          <h2 class="section-title">About Me</h2>
-          <div class="about-content">
-            <div class="about-text">
-              <p>
-                I'm a creative developer with a passion for building immersive
-                digital experiences. My work spans web development, game design,
-                and film production.
-              </p>
-              <p>
-                At LMF, I explore the intersection of technology and creativity,
-                pushing boundaries to create memorable experiences.
-              </p>
-              <div class="skills">
-                <h3>Skills</h3>
-                <div class="skill-tags">
-                  <span class="skill-tag">HTML/CSS</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">Vue.js</span>
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">Game Development</span>
-                  <span class="skill-tag">Video Editing</span>
-                  <span class="skill-tag">VFX</span>
-                  <span class="skill-tag">UI/UX Design</span>
-                </div>
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="animate-text">Welcome to LMF</h1>
+          <div id="lmf-meaning"></div>
+          <p class="animate-text">A Modern Frontier of Innovation</p>
+          <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary magnetic-btn">View My Work</a>
+            <a href="#about" class="btn btn-secondary magnetic-btn">About Me</a>
+          </div>
+        </div>
+        <div class="hero-image animate-image">
+          <div class="image-container">
+            <img src="images/Me.jpg" alt="Logge" class="profile-image active" />
+            <img src="images/Me2.jpg" alt="Logge" class="profile-image" />
+            <img src="svg/Me3.svg" alt="Logge" class="profile-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-wrapper">
+      <div class="ticker">
+        <div class="ticker__item">CREATIVE DEVELOPER •</div>
+        <div class="ticker__item">GAME DESIGN •</div>
+        <div class="ticker__item">WEB INNOVATION •</div>
+        <div class="ticker__item">CINEMATIC EXPERIENCES •</div>
+        <div class="ticker__item">UI/UX DESIGN •</div>
+        <div class="ticker__item">AI EXPERT •</div>
+        <div class="ticker__item">CREATIVE DEVELOPER •</div>
+        <div class="ticker__item">GAME DESIGN •</div>
+        <div class="ticker__item">WEB INNOVATION •</div>
+        <div class="ticker__item">CINEMATIC EXPERIENCES •</div>
+        <div class="ticker__item">UI/UX DESIGN •</div>
+        <div class="ticker__item">AI EXPERT •</div>
+      </div>
+    </div>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm a creative developer with a passion for building immersive
+              digital experiences. My work spans web development, game design,
+              and film production.
+            </p>
+            <p>
+              At LMF, I explore the intersection of technology and creativity,
+              pushing boundaries to create memorable experiences.
+            </p>
+            <div class="skills">
+              <h3>Skills</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">LLMs (GPT, Claude)</span>
+                <span class="skill-tag">AI Agents</span>
+                <span class="skill-tag">RAG Architecture</span>
+                <span class="skill-tag">Prompt Engineering</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Game Development</span>
+                <span class="skill-tag">Video Editing</span>
+                <span class="skill-tag">VFX</span>
+                <span class="skill-tag">UI/UX Design</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="projects" class="projects">
-        <div class="container">
-          <h2 class="section-title">My Projects</h2>
-          <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="website">Websites</button>
-            <button class="filter-btn" data-filter="movie">Movies</button>
-            <button class="filter-btn" data-filter="game">Games</button>
-          </div>
-          <div id="projects-container" class="projects-grid">
-            <!-- Projects will be loaded dynamically -->
-          </div>
-        </div>
-      </section>
-
-      <section id="partners" class="partners">
-        <div class="container">
-          <h2 class="section-title">Partners</h2>
-          <div id="partners-container" class="partners-grid">
-            <!-- Partners will be loaded dynamically -->
-          </div>
-        </div>
-      </section>
-
-      <section id="socials" class="socials">
-        <div class="container">
-          <h2 class="section-title">Connect With Me</h2>
-          <div class="socials-content">
-            <p class="socials-intro">
-              Let's collaborate on your next project or just chat about creative
-              ideas.
-            </p>
-            <div id="connect-links-container" class="social-links-grid">
-              <!-- Social links will be loaded dynamically -->
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
+    <section id="projects" class="projects">
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <a href="#home">
-              <img src="svg/Logo.svg" alt="LMF Logo" class="logo-img" />
-            </a>
-          </div>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#partners">Partners</a>
-            <a href="#socials">Connect</a>
-          </div>
+        <h2 class="section-title">My Projects</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="website">Websites</button>
+          <button class="filter-btn" data-filter="movie">Movies</button>
+          <button class="filter-btn" data-filter="game">Games</button>
         </div>
-        <div class="footer-bottom">
-          <p>
-            &copy; <span id="current-year"></span> LMF. All rights reserved.
-          </p>
+        <div id="projects-container" class="projects-grid">
+          <!-- Projects will be loaded dynamically -->
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+    <section id="partners" class="partners">
+      <div class="container">
+        <h2 class="section-title">Partners</h2>
+        <div id="partners-container" class="partners-grid">
+          <!-- Partners will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <section id="socials" class="socials">
+      <div class="container">
+        <h2 class="section-title">Connect With Me</h2>
+        <div class="socials-content">
+          <p class="socials-intro">
+            Let's collaborate on your next project or just chat about creative
+            ideas.
+          </p>
+          <div id="connect-links-container" class="social-links-grid">
+            <!-- Social links will be loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <a href="#home">
+            <img src="svg/Logo.svg" alt="LMF Logo" class="logo-img" />
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#partners">Partners</a>
+          <a href="#socials">Connect</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; <span id="current-year"></span> LMF. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modal-image" src="" alt="">
+        </div>
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <div id="modal-category" class="project-category"></div>
+          <p id="modal-description"></p>
+          <div id="modal-tags" class="project-tags"></div>
+          <a id="modal-link" href="#" target="_blank" class="btn btn-primary magnetic-btn">Launch Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
