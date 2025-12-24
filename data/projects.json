@@ -1,5 +1,18 @@
 [
     {
+        "id": "beatguessr",
+        "title": "BeatGuessr",
+        "category": "Game Website",
+        "description": "Music guessing game with two modes: Classic (guess title & artist) and Timeline (sort songs chronologically). Features 660 songs from 1960-2025 with Spotify previews.",
+        "picture": "images/BeatGuessr",
+        "link": "https://loggel.github.io/BeatGuessr/",
+        "tags": [
+            "game",
+            "music",
+            "javascript"
+        ]
+    },
+    {
         "id": "theater-website",
         "title": "Kolpingtheater Ramsen",
         "category": "Website + Ticket System",
