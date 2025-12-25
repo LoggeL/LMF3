@@ -1,5 +1,19 @@
 [
     {
+        "id": "coop-sudoku",
+        "title": "Coop Sudoku",
+        "category": "Game Website",
+        "description": "Real-time multiplayer Sudoku with Coop and Versus modes. Race to claim cells, track scores, and solve puzzles together. Built with React, Socket.IO, and TypeScript.",
+        "picture": "images/CoopSudoku",
+        "link": "https://sudoku.logge.top",
+        "tags": [
+            "game",
+            "multiplayer",
+            "typescript",
+            "react"
+        ]
+    },
+    {
         "id": "beatguessr",
         "title": "BeatGuessr",
         "category": "Game Website",
